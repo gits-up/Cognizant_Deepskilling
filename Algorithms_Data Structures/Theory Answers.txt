@@ -1,0 +1,225 @@
+Exercise 1: Inventory Management System
+
+Scenario: 
+You are developing an inventory management system for a warehouse. Efficient data storage and retrieval are crucial.
+
+Steps:
+1.	Understand the Problem:
+
+o	Explain why data structures and algorithms are essential in handling large inventories.
+
+Answer: Efficient data structures and algorithms are necessary for fast access, update, and organization of data. In inventory systems, large volumes of products must be managed in real-time. Without optimal structures the performance degrades. Choosing the right data structure minimizes time complexity for operations like add, search, update, and delete.
+
+o	Discuss the types of data structures suitable for this problem.
+
+Answer: HashMap - For fast access using productId as the key (O(1) operations), ArrayList - Simple to iterate and maintain order but slower search/update (O(n)).
+
+4.	Analysis:
+
+o	Analyze the time complexity of each operation (add, update, delete) in your chosen data structure.
+
+Answer: Add: O(1), Update: O(1), Delete: O(1).
+
+o	Discuss how you can optimize these operations.
+
+Answer: HashMap for fast key-based access. If frequent traversal in order is needed we can consider LinkedHashMap or TreeMap (sorted).
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+Exercise 2: E-commerce Platform Search Function
+
+Scenario: 
+You are working on the search functionality of an e-commerce platform. The search needs to be optimized for fast performance.
+
+Steps:
+1.	Understand Asymptotic Notation:
+
+o	Explain Big O notation and how it helps in analyzing algorithms.
+
+Answer: Big O notation describes the upper bound of an algorithm's running time or space as a function of input size (n). It helps evaluate algorithm efficiency in terms of time or space complexity.
+
+o	Describe the best, average, and worst-case scenarios for search operations.
+
+Answer: Linear Search:
+  		Best: O(1)
+  		Average: O(n/2)
+  		Worst: O(n)
+
+	Binary Search:
+  		Best: O(1)
+  		Average & Worst: O(log n)
+
+4.	Analysis:
+
+o	Discuss which algorithm is more suitable for your platform and why.
+
+Answer:  For small or unsorted data: Linear search is acceptable. For large and sorted data: Binary search is faster due to logarithmic time.
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Exercise 3: Sorting Customer Orders
+
+Scenario: 
+You are tasked with sorting customer orders by their total price on an e-commerce platform. This helps in prioritizing high-value orders.
+
+Steps:
+1.	Understand Sorting Algorithms:
+
+o	Explain different sorting algorithms (Bubble Sort, Insertion Sort, Quick Sort, Merge Sort).
+
+Answer: Bubble Sort:
+  		Repeatedly swaps adjacent elements if they are in the wrong order.
+  		Simple but inefficient for large datasets.
+  		Time complexity: O(n^2)
+
+	Insertion Sort:
+  		Builds sorted array one element at a time by inserting items into the correct position.
+  		Good for small or nearly sorted datasets.
+  		Time complexity: O(n^2)
+
+	Quick Sort:
+  		Picks a pivot and partitions the array such that left side < pivot and right side > pivot, recursively.
+  		Very efficient for large datasets.
+  		Time complexity: Average - O(n log n), Worst - O(n^2)
+
+	Merge Sort:
+  		Divides the array in halves, recursively sorts them, then merges.
+  		Stable and consistent.
+  		Time complexity: O(n log n)
+
+4.	Analysis:
+
+o	Discuss why Quick Sort is generally preferred over Bubble Sort.
+
+Answer: Quick Sort performs significantly better in average cases due to fewer total comparisons and swaps. Bubble Sort is mainly educational, not used in production due to its quadratic time.
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Exercise 4: Employee Management System
+
+Scenario: 
+You are developing an employee management system for a company. Efficiently managing employee records is crucial.
+
+Steps:
+1.	Understand Array Representation:
+
+o	Explain how arrays are represented in memory and their advantages.
+
+Answer: Arrays are contiguous blocks of memory, where each element is accessed via index.
+	Advantages:
+  		Fast access using index (O(1) time complexity).
+  		Simple to implement and manage fixed-size data.
+  		Cache-friendly due to contiguous memory layout.
+
+4.	Analysis:
+o	Analyze the time complexity of each operation (add, search, traverse, delete).
+
+Answer: Add (at end): O(1) if space available, else O(n) if resizing.
+	Search: O(n) (linear search).
+	Traverse: O(n)
+	Delete (by value or index): O(n)
+
+o	Discuss the limitations of arrays and when to use them.
+
+Answer: Fixed size — resizing requires creating a new array and copying.
+	Insertions and deletions are costly if not at the end.
+	Inefficient for dynamic data where frequent changes occur.
+
+When to use:
+	When we know the size in advance or the number of records is small.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Exercise 5: Task Management System
+
+Scenario: 
+You are developing a task management system where tasks need to be added, deleted, and traversed efficiently.
+
+Steps:
+1.	Understand Linked Lists:
+
+o	Explain the different types of linked lists (Singly Linked List, Doubly Linked List).
+
+Answer: Singly Linked List:
+  		Each node points to the next node.
+  		One-way traversal.
+  		Simple to implement.
+
+	Doubly Linked List:
+  		Each node points to both the next and previous nodes.
+  		Two-way traversal.
+  		Requires more memory due to extra pointer.
+4.	Analysis:
+o	Analyze the time complexity of each operation.
+
+Answer: Add at end: O(n), Search: O(n), Traverse: O(n), Delete: O(n)
+
+o	Discuss the advantages of linked lists over arrays for dynamic data.
+
+Answer: Dynamic size - memory is allocated as needed.
+	Insertion and deletion are easier and more efficient, especially in the middle or beginning.
+	No need for resizing or shifting elements like arrays.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+Exercise 6: Library Management System
+
+Scenario: 
+You are developing a library management system where users can search for books by title or author.
+
+Steps:
+1.	Understand Search Algorithms:
+
+o	Explain linear search and binary search algorithms.
+
+Answer: Linear Search:
+  		Traverses each element one by one.
+  		Does not require sorted data.
+  		Time Complexity: O(n)
+
+	Binary Search:
+  		Repeatedly divides the sorted array in half to search.
+  		Requires sorted data.
+  		Time Complexity: O(log n)
+
+4.	Analysis:
+o	Compare the time complexity of linear and binary search.
+
+Answer:  Linear Search: Best O(1), Worst O(n)
+	 Binary Search: Best O(1), Worst O(log n)
+
+o	Discuss when to use each algorithm based on the data set size and order.
+
+Answer: Linear Search: For small or unsorted datasets.
+	Binary Search: For large, sorted datasets.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+Exercise 7: Financial Forecasting
+
+Scenario: 
+You are developing a financial forecasting tool that predicts future values based on past data.
+
+Steps:
+1.	Understand Recursive Algorithms:
+
+o	Explain the concept of recursion and how it can simplify certain problems.
+
+Answer: Recursion is a technique where a function calls itself to solve smaller subproblems. Its useful for problems that can be broken down into similar subproblems (e.g., Fibonacci series, factorial, tree traversal).
+
+4.	Analysis:
+o	Discuss the time complexity of your recursive algorithm.
+
+Answer: Naive recursion: O(n) where n = number of years
+	Optimized (memoization or direct power formula): O(1)
+
+o	Explain how to optimize the recursive solution to avoid excessive computation.
+
+Answer: Avoid deep recursive calls using iteration or direct power functions to reduce call stack overhead and improve performance.
+
+
+
