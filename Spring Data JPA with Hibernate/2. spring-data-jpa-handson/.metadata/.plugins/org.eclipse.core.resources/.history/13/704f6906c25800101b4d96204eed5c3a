@@ -1,0 +1,116 @@
+package com.cognizant.orm_learn_query;
+
+import com.cognizant.orm_learn_query.model.Stock;
+import com.cognizant.orm_learn_query.repository.StockRepository;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class OrmLearnQueryApplication {
+
+    private static StockRepository stockRepository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrmLearnQueryApplication.class);
+
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(OrmLearnQueryApplication.class, args);
+        stockRepository = context.getBean(StockRepository.class);
+
+        testFacebookStocksInSep2019();
+        testGoogleStocksWithCloseGreaterThan1250();
+        testNetflixStocksWithVolumeLessThan5000000();
+    }
+
+    private static void testFacebookStocksInSep2019() {
+        LOGGER.info("Start - Facebook stocks in Sep 2019");
+        try {
+            Date start = new SimpleDateFormat("yyyy-MM-dd").parse("2019-09-01");
+            Date end = new SimpleDateFormat("yyyy-MM-dd").parse("2019-09-30");
+
+            List<Stock> list = stockRepository.findByCodeAndDateBetween("FB", start, end);
+            list.forEach(stock -> LOGGER.debug("Stock: {}", stock));
+        } catch (Exception e) {
+            LOGGER.error("Date parse error: {}", e.getMessage());
+        }
+        LOGGER.info("End");
+    }
+
+    private static void testGoogleStocksWithCloseGreaterThan1250() {
+        LOGGER.info("Start - Google stocks with close > 1250");
+        List<Stock> list = stockRepository.findByCodeAndCloseGreaterThan("GOOG", 1250);
+        list.forEach(stock -> LOGGER.debug("Stock: {}", stock));
+        LOGGER.info("End");
+    }
+
+    private static void testNetflixStocksWithVolumeLessThan5000000() {
+        LOGGER.info("Start - Netflix stocks with volume < 5M");
+        List<Stock> list = stockRepository.findByCodeAndVolumeLessThan("NFLX", 5000000);
+        list.forEach(stock -> LOGGER.debug("Stock: {}", stock));
+        LOGGER.info("End");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//package com.cognizant.orm_learn_query;
+//
+//import com.cognizant.orm_learn_query.service.EmployeeService;
+//
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+//
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.context.ApplicationContext;
+//
+//@SpringBootApplication
+//public class OrmLearnQueryApplication {
+//
+//    private static EmployeeService employeeService;
+//    private static final Logger LOGGER = LoggerFactory.getLogger(OrmLearnQueryApplication.class);
+//
+//    public static void main(String[] args) {
+//        ApplicationContext context = SpringApplication.run(OrmLearnQueryApplication.class, args);
+//        employeeService = context.getBean(EmployeeService.class);
+//
+//        testPrintAllEmployeesWithSkills();
+//    }
+//
+//    private static void testPrintAllEmployeesWithSkills() {
+//        LOGGER.info("Start");
+//        employeeService.printAllEmployeesWithSkills();
+//        LOGGER.info("End");
+//    }
+//}

@@ -1,0 +1,52 @@
+package com.cognizant.orm_learn_query;
+
+import com.cognizant.orm_learn_query.model.*;
+import com.cognizant.orm_learn_query.service.AttemptService;
+import com.cognizant.orm_learn_query.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OrmLearnQueryApplication implements CommandLineRunner {
+
+    @Autowired
+    private AttemptService attemptService;
+
+    @Autowired
+    private EmployeeService employeeService;
+
+    public static void main(String[] args) {
+        SpringApplication.run(OrmLearnQueryApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        // Uncomment whichever test you want to run
+        // testGetAttemptDetails();
+        testGetAverageSalary();
+    }
+
+    public void testGetAttemptDetails() {
+        Attempt attempt = attemptService.getAttempt(1, 5001);
+        System.out.println("User: " + attempt.getUser().getName());
+        System.out.println("Date: " + attempt.getDateTime());
+
+        for (AttemptQuestion aq : attempt.getQuestions()) {
+            System.out.println("\n" + aq.getQuestion().getText());
+            for (AttemptOption ao : aq.getAttemptOptions()) {
+                Option op = ao.getOption();
+                System.out.printf(" - %s\t%.1f\t%s\n",
+                    op.getText(),
+                    op.getScore(),
+                    ao.isSelected());
+            }
+        }
+    }
+
+    public void testGetAverageSalary() {
+        Double avgSalary = employeeService.getAverageSalary();
+        System.out.println("Average Salary: " + avgSalary);
+    }
+}

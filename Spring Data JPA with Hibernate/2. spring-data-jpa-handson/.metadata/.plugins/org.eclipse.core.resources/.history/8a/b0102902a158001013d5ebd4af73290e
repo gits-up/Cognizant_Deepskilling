@@ -1,0 +1,47 @@
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import com.cognizant.orm_learn_query.model.Country;
+import com.cognizant.orm_learn_query.repository.CountryRepository;
+
+@SpringBootApplication
+public class OrmLearnQueryApplication {
+
+    private static CountryRepository countryRepository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrmLearnQueryApplication.class);
+
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(OrmLearnQueryApplication.class, args);
+        countryRepository = context.getBean(CountryRepository.class);
+
+        testSearchByText();
+        testSearchByTextSorted();
+        testSearchByStartingLetter();
+    }
+
+    private static void testSearchByText() {
+        LOGGER.info("Start - Search by text (ou)");
+        List<Country> list = countryRepository.findByNameContainingIgnoreCase("ou");
+        list.forEach(country -> LOGGER.debug("Country: {}", country));
+        LOGGER.info("End");
+    }
+
+    private static void testSearchByTextSorted() {
+        LOGGER.info("Start - Search by text (ou) sorted by name ascending");
+        List<Country> list = countryRepository.findByNameContainingIgnoreCaseOrderByNameAsc("ou");
+        list.forEach(country -> LOGGER.debug("Country: {}", country));
+        LOGGER.info("End");
+    }
+
+    private static void testSearchByStartingLetter() {
+        LOGGER.info("Start - Search by starting letter Z");
+        List<Country> list = countryRepository.findByNameStartingWith("Z");
+        list.forEach(country -> LOGGER.debug("Country: {}", country));
+        LOGGER.info("End");
+    }
+}

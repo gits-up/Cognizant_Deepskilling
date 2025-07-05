@@ -1,0 +1,31 @@
+package com.cognizant.orm_learn_query.service;
+
+import com.cognizant.orm_learn_query.model.Employee;
+import com.cognizant.orm_learn_query.repository.EmployeeRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Service
+public class EmployeeService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeService.class);
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Transactional
+    public void getEmployeeDetails(int empId) {
+        Employee emp = employeeRepository.findById(empId).orElse(null);
+        if (emp != null) {
+            LOGGER.debug("Employee: {}", emp);
+            LOGGER.debug("Department: {}", emp.getDepartment().getName());
+        } else {
+            LOGGER.warn("Employee with ID {} not found", empId);
+        }
+    }
+}

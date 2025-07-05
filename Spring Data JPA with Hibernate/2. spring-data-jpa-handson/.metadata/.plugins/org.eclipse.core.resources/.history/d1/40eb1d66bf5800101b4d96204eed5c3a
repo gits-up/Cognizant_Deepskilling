@@ -1,0 +1,44 @@
+package com.cognizant.orm_learn_query;
+
+import java.util.List;
+
+import com.cognizant.orm_learn_query.model.Department;
+import com.cognizant.orm_learn_query.model.Employee;
+import com.cognizant.orm_learn_query.service.DepartmentService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class OrmLearnQueryApplication {
+
+    private static DepartmentService departmentService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrmLearnQueryApplication.class);
+
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(OrmLearnQueryApplication.class, args);
+        departmentService = context.getBean(DepartmentService.class);
+
+        testGetDepartmentAndEmployees();
+    }
+
+    private static void testGetDepartmentAndEmployees() {
+        LOGGER.info("Start");
+
+        Department department = departmentService.getDepartmentWithEmployees(1); // ID of 'IT' department
+        if (department != null) {
+            LOGGER.debug("Department: {}", department.getName());
+
+            List<Employee> employees = department.getEmployees();
+            employees.forEach(emp -> LOGGER.debug("Employee: {}", emp));
+        } else {
+            LOGGER.warn("Department with ID 1 not found");
+        }
+
+        LOGGER.info("End");
+    }
+}

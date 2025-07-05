@@ -1,0 +1,1 @@
+Since for Hands-on 2 and Hands-on 3 .csv and .sql files were not provided I used random values in it.

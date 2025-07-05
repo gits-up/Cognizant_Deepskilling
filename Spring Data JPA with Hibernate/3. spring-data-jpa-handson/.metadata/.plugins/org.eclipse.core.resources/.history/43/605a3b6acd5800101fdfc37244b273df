@@ -1,0 +1,67 @@
+package com.cognizant.orm_learn_query;
+
+import com.cognizant.orm_learn_query.model.*;
+import com.cognizant.orm_learn_query.service.AttemptService;
+import com.cognizant.orm_learn_query.service.EmployeeService;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OrmLearnQueryApplication implements CommandLineRunner {
+
+    @Autowired
+    private AttemptService attemptService;
+
+    @Autowired
+    private EmployeeService employeeService;
+
+    public static void main(String[] args) {
+        SpringApplication.run(OrmLearnQueryApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+//    	testGetAverageSalaryByDepartment();
+//    	testGetHighestPaidEmployee();
+    	testDynamicProductFilter(); // Hands-on 6
+
+    }
+
+    public void testGetAverageSalaryByDepartment() {
+        int deptId = 2;
+        Double avgSalary = employeeService.getAverageSalaryByDepartment(deptId);
+        System.out.println("Average salary in department ID " + deptId + ": " + avgSalary);
+    }
+
+
+    public void testGetHighestPaidEmployee() {
+        List<Employee> employees = employeeService.getHighestPaidEmployees();
+        System.out.println("Highest Paid Employees:");
+        for (Employee e : employees) {
+            System.out.println("Name: " + e.getName());
+            System.out.println("Salary: " + e.getSalary());
+            System.out.println("Department: " + e.getDepartment().getName());
+            System.out.println("------");
+        }
+    }
+    
+    public void testDynamicProductFilter() {
+        String cpu = "Intel i7";
+        Integer ram = 16;
+        String os = "Windows";
+
+        List<Product> products = productService.getFilteredProducts(cpu, ram, os);
+
+        System.out.println("Filtered Products:");
+        for (Product p : products) {
+            System.out.println(p.getName() + " | CPU: " + p.getCpu() + ", RAM: " + p.getRam() + ", OS: " + p.getOs());
+        }
+    }
+
+
+}

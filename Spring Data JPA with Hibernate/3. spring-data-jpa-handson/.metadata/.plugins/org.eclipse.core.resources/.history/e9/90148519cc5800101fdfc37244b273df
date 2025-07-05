@@ -1,0 +1,42 @@
+package com.cognizant.orm_learn_query;
+
+import com.cognizant.orm_learn_query.model.*;
+import com.cognizant.orm_learn_query.service.AttemptService;
+import com.cognizant.orm_learn_query.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OrmLearnQueryApplication implements CommandLineRunner {
+
+    @Autowired
+    private AttemptService attemptService;
+
+    @Autowired
+    private EmployeeService employeeService;
+
+    public static void main(String[] args) {
+        SpringApplication.run(OrmLearnQueryApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        // testGetAverageSalary();
+        testGetHighestPaidEmployee();
+    }
+
+    public void testGetAverageSalary() {
+        Double avgSalary = employeeService.getAverageSalary();
+        System.out.println("Average Salary: " + avgSalary);
+    }
+
+    public void testGetHighestPaidEmployee() {
+        Employee employee = employeeService.getHighestPaidEmployee();
+        System.out.println("Highest Paid Employee:");
+        System.out.println("Name: " + employee.getName());
+        System.out.println("Salary: " + employee.getSalary());
+        System.out.println("Department: " + employee.getDepartment().getName());
+    }
+}

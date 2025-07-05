@@ -1,0 +1,34 @@
+package com.cognizant.orm_learn_query.model;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Set;
+
+@Entity
+public class Attempt {
+
+    @Id
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @Column(name = "date_time")
+    private LocalDateTime dateTime;
+
+    @OneToMany(mappedBy = "attempt")
+    private Set<AttemptQuestion> questions;
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
+
+    public LocalDateTime getDateTime() { return dateTime; }
+    public void setDateTime(LocalDateTime dateTime) { this.dateTime = dateTime; }
+
+    public Set<AttemptQuestion> getQuestions() { return questions; }
+    public void setQuestions(Set<AttemptQuestion> questions) { this.questions = questions; }
+}

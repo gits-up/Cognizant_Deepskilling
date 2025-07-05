@@ -1,0 +1,55 @@
+package com.cognizant.orm_learn.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cognizant.orm_learn.model.Country;
+import com.cognizant.orm_learn.repository.CountryRepository;
+import com.cognizant.orm_learn.service.exception.CountryNotFoundException;
+
+@Service
+public class CountryService {
+
+    @Autowired
+    private CountryRepository countryRepository;
+
+    @Transactional
+    public List<Country> getAllCountries() {
+        return countryRepository.findAll();
+    }
+
+    @Transactional
+    public Country findCountryByCode(String code) throws CountryNotFoundException {
+        return countryRepository.findById(code)
+                .orElseThrow(() -> new CountryNotFoundException("Country not found with code: " + code));
+    }
+
+    @Transactional
+    public void addCountry(Country country) {
+        countryRepository.save(country);
+    }
+
+    @Transactional
+    public void updateCountry(String code, String name) throws CountryNotFoundException {
+        Country country = findCountryByCode(code);
+        country.setName(name);
+        countryRepository.save(country);
+    }
+
+    @Transactional
+    public void deleteCountry(String code) throws CountryNotFoundException {
+        if (!countryRepository.existsById(code)) {
+            throw new CountryNotFoundException("Cannot delete. Country not found with code: " + code);
+        }
+        countryRepository.deleteById(code);
+    }
+
+    @Transactional
+    public List<Country> findCountriesByPartialName(String name) {
+        return countryRepository.findByNameContainingIgnoreCase(name);
+    }
+}

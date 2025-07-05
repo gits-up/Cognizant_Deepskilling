@@ -1,0 +1,20 @@
+package com.cognizant.orm_learn_query.repository;
+
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.cognizant.orm_learn_query.model.Country;
+
+@Repository
+public interface CountryRepository extends JpaRepository<Country, String> {
+
+    // 1. Countries containing specific letters (case-insensitive)
+    List<Country> findByNameContainingIgnoreCase(String text);
+
+    // 2. Countries containing specific letters sorted by name ascending
+    List<Country> findByNameContainingIgnoreCaseOrderByNameAsc(String text);
+
+    // 3. Countries that start with a specific letter
+    List<Country> findByNameStartingWith(String prefix);
+}

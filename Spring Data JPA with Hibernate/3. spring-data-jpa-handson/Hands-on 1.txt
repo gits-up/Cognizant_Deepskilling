@@ -1,0 +1,23 @@
+JPQL (Java Persistence Query Language)
+
+Defined by the JPA specification
+
+Standardized and portable across any JPA implementation (like EclipseLink, Hibernate, etc.)
+
+Uses entity class names and fields, not table or column names
+
+Limited to the standard JPA syntax
+
+
+
+
+HQL (Hibernate Query Language)
+
+Specific to Hibernate
+
+Extends JPQL with additional features like:
+insert ... select ... support
+
+Access to Hibernate-specific functions and mappings
+
+Tightly coupled with Hibernate implementation

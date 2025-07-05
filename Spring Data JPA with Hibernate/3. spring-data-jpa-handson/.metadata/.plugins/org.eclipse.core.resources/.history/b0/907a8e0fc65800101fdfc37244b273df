@@ -1,0 +1,13 @@
+package com.cognizant.orm_learn_query;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OrmLearnQueryApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(OrmLearnQueryApplication.class, args);
+	}
+
+}

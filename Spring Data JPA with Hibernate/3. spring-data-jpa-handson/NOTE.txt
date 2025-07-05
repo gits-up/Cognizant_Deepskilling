@@ -1,0 +1,1 @@
+Since in hands-on 3 the .mwb file is missing I used sample quiz questions.
