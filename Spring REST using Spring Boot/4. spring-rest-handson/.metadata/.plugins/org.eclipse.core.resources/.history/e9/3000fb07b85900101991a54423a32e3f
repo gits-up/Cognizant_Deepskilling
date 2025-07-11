@@ -1,0 +1,44 @@
+package com.cognizant.spring_learn.rest_handson.fourth.controller;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@WebMvcTest(EmployeeController.class)
+public class EmployeeControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @Test
+    public void testUpdateEmployee_ValidationFailure() throws Exception {
+        String employeeJson = """
+            {
+              "id": 1,
+              "name": "John",
+              "salary": 50000,
+              "permanent": true,
+              "dateOfBirth": "1990-01-01",
+              "department": {
+                "id": 2,
+                "name": "Technology"
+              }
+            }
+        """;
+
+        mockMvc.perform(put("/employees")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(employeeJson))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("skillList: There should be at least one skill"));
+    }
+}

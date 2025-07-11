@@ -1,0 +1,5 @@
+package com.cognizant.spring_learn.rest_handson.fourth.exception;
+
+public class EmployeeNotFoundException {
+
+}

@@ -1,0 +1,29 @@
+package com.cognizant.spring_learn.rest_handson.fourth;
+
+import com.cognizant.spring_learn.rest_handson.fourth.model.Employee;
+import com.cognizant.spring_learn.rest_handson.fourth.service.EmployeeService;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class EmployeeRestApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EmployeeRestApplication.class, args);
+    }
+
+    @Bean
+    public CommandLineRunner addData(EmployeeService service) {
+        return args -> {
+            Employee e = new Employee();
+            e.setId(1);
+            e.setName("John Doe");
+            e.setSalary(50000);
+            e.setPermanent(true);
+            // No need for full structure — just enough for DELETE test
+            service.addDummyEmployee(e);
+        };
+    }
+}

@@ -1,0 +1,5 @@
+package com.cognizant.spring_learn.rest_handson.employee_rest.dao;
+
+public class DepartmentDao {
+
+}

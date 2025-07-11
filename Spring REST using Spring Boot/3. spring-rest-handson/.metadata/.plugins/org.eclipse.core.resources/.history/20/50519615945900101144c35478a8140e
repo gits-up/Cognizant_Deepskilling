@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Departments -->
+    <bean id="hr" class="com.cognizant.spring_learn.rest_handson.employee_rest.model.Department">
+        <property name="id" value="1"/>
+        <property name="name" value="Human Resources"/>
+    </bean>
+
+    <bean id="tech" class="com.cognizant.spring_learn.rest_handson.employee_rest.model.Department">
+        <property name="id" value="2"/>
+        <property name="name" value="Technology"/>
+    </bean>
+
+    <!-- Skills -->
+    <bean id="java" class="com.cognizant.spring_learn.rest_handson.employee_rest.model.Skill">
+        <property name="id" value="1"/>
+        <property name="name" value="Java"/>
+    </bean>
+
+    <bean id="spring" class="com.cognizant.spring_learn.rest_handson.employee_rest.model.Skill">
+        <property name="id" value="2"/>
+        <property name="name" value="Spring"/>
+    </bean>
+
+    <bean id="sql" class="com.cognizant.spring_learn.rest_handson.employee_rest.model.Skill">
+        <property name="id" value="3"/>
+        <property name="name" value="SQL"/>
+    </bean>
+
+    <!-- Employees -->
+    <bean id="employeeList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <bean class="com.cognizant.spring_learn.rest_handson.employee_rest.model.Employee">
+                    <property name="id" value="1"/>
+                    <property name="name" value="John"/>
+                    <property name="salary" value="50000"/>
+                    <property name="permanent" value="true"/>
+                    <property name="dateOfBirth">
+                        <value>1990/01/01</value>
+                    </property>
+                    <property name="department" ref="tech"/>
+                    <property name="skillList">
+                        <list>
+                            <ref bean="java"/>
+                            <ref bean="spring"/>
+                        </list>
+                    </property>
+                </bean>
+
+                <bean class="com.cognizant.spring_learn.rest_handson.employee_rest.model.Employee">
+                    <property name="id" value="2"/>
+                    <property name="name" value="Alice"/>
+                    <property name="salary" value="45000"/>
+                    <property name="permanent" value="false"/>
+                    <property name="dateOfBirth">
+                        <value>1992/06/21</value>
+                    </property>
+                    <property name="department" ref="hr"/>
+                    <property name="skillList">
+                        <list>
+                            <ref bean="sql"/>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>

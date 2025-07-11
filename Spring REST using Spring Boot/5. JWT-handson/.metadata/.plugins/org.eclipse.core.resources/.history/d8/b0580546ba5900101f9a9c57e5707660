@@ -1,0 +1,5 @@
+package com.cognizant.spring_learn.jwt_handson.jwt_handson.config;
+
+public class SecurityConfig {
+
+}

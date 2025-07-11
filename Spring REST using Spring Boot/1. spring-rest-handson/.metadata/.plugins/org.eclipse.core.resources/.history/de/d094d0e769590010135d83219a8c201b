@@ -1,0 +1,8 @@
+# Set log level for Spring Framework logs
+logging.level.org.springframework=INFO
+
+# Set log level for your own package
+logging.level.com.cognizant.spring_learn=DEBUG
+
+# Customize console log output format
+logging.pattern.console=%d{yyMMdd}|%d{HH:mm:ss.SSS}|%-20.20thread|%5p|%-25.25logger{25}|%25M|%m%n
