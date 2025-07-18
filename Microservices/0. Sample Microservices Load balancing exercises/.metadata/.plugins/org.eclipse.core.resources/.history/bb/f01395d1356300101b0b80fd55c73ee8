@@ -1,0 +1,5 @@
+package com.cognizant.gateway.gateway_loadbalancer.config;
+
+public class LoadBalancerConfiguration {
+
+}

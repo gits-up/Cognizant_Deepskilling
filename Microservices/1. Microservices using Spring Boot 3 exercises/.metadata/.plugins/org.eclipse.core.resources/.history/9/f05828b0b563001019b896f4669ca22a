@@ -1,0 +1,5 @@
+package com.cognizant.payment.payment_service.controller;
+
+public class PaymentController {
+
+}

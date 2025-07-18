@@ -1,0 +1,5 @@
+package com.cognizant.auth.custom_jwt_server;
+
+public class SecureController {
+
+}

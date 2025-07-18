@@ -1,0 +1,21 @@
+package com.cognizant.auth.customjwtserver;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+public class SecureController {
+
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
+
+    @GetMapping("/generate-token")
+    public String generate(@RequestParam String username) {
+        return jwtTokenProvider.createToken(username);
+    }
+
+    @GetMapping("/secure")
+    public String securedEndpoint() {
+        return "✅ Accessed secure endpoint with valid token";
+    }
+}

@@ -1,0 +1,14 @@
+server.port=8083
+spring.application.name=payment-service
+
+# Resilience4j configuration for circuit breaker
+resilience4j.circuitbreaker.instances.paymentCircuitBreaker.registerHealthIndicator=true
+resilience4j.circuitbreaker.instances.paymentCircuitBreaker.slidingWindowSize=5
+resilience4j.circuitbreaker.instances.paymentCircuitBreaker.failureRateThreshold=50
+resilience4j.circuitbreaker.instances.paymentCircuitBreaker.waitDurationInOpenState=5s
+
+# Time limiter (optional, useful for simulating timeout)
+resilience4j.timelimiter.instances.paymentCircuitBreaker.timeoutDuration=2s
+
+# Enable actuator endpoints (optional but good for monitoring)
+management.endpoints.web.exposure.include=*

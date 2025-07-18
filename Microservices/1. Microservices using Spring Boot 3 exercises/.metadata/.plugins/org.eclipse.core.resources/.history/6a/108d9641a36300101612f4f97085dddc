@@ -1,0 +1,6 @@
+server.port=8888
+spring.application.name=config-server
+
+# Replace with your real local path
+spring.cloud.config.server.native.search-locations=file:///C:/Programming/config-repo
+spring.profiles.active=native

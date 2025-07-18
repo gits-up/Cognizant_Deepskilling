@@ -1,0 +1,5 @@
+package com.cognizant.gateway.gateway_resilience.config;
+
+public class ResilienceConfiguration {
+
+}

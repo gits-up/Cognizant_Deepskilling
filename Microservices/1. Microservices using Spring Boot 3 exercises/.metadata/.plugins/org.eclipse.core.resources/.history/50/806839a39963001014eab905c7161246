@@ -1,0 +1,5 @@
+package com.cognizant.orderservice.config;
+
+public class WebClientConfig {
+
+}

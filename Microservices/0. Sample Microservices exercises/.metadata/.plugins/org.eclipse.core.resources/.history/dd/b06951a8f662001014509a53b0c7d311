@@ -1,0 +1,5 @@
+package com.cognizant.auth.central_resource_server;
+
+public class SecureController {
+
+}

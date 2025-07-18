@@ -1,0 +1,5 @@
+package com.cognizant.inventory_service.model;
+
+public class Inventory {
+
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\payment-service"/>
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\billing-service"/>
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\customer-service"/>
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\gateway-service\src\main\resources\application.properties"/>
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\gateway-service"/>
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\product-service"/>
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\inventory-service"/>
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\eureka-server"/>
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\config-server"/>
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\user-service"/>
+			<item value="C:\Programming\Cognizant\Microservices\1. Microservices using Spring Boot 3 exercises\order-service"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

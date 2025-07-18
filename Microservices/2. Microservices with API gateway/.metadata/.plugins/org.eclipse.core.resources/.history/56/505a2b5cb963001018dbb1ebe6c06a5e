@@ -1,0 +1,5 @@
+package com.cognizant.api_gateway.filter;
+
+public class LogFilterConfig {
+
+}

@@ -1,0 +1,6 @@
+spring:
+  security:
+    jwt:
+      secret: mySecretKey1234567890  # 🔐 used to sign the JWT
+server:
+  port: 8082

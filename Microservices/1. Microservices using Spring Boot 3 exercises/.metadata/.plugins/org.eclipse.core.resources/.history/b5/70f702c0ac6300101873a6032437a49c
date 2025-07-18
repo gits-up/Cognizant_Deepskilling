@@ -1,0 +1,25 @@
+# Server Port
+server.port=8080
+
+# Gateway App Name
+spring.application.name=gateway-service
+
+# === ROUTES ===
+spring.cloud.gateway.routes[0].id=customer-route
+spring.cloud.gateway.routes[0].uri=http://localhost:8081
+spring.cloud.gateway.routes[0].predicates[0]=Path=/customer/**
+spring.cloud.gateway.routes[0].filters[0]=RewritePath=/customer/(?<segment>.*), /${segment}
+
+spring.cloud.gateway.routes[1].id=billing-route
+spring.cloud.gateway.routes[1].uri=http://localhost:8082
+spring.cloud.gateway.routes[1].predicates[0]=Path=/billing/**
+spring.cloud.gateway.routes[1].filters[0]=RewritePath=/billing/(?<segment>.*), /${segment}
+
+# === RATE LIMITING Example (basic) ===
+spring.cloud.gateway.filter.request-rate-limiter.enabled=true
+
+# Redis would be used in real apps, we are just setting this as placeholder
+# You may skip Redis setup if not using real rate limiting
+
+# === ACTUATOR ===
+management.endpoints.web.exposure.include=*

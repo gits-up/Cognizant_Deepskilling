@@ -1,0 +1,5 @@
+package com.cognizant.userservice.controller;
+
+public class UserController {
+
+}

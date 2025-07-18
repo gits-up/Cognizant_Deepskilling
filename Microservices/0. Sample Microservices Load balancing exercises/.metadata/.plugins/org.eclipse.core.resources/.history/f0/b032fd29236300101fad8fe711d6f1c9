@@ -1,0 +1,5 @@
+package com.cognizant.gateway.gateway_edge_service.filter;
+
+public class LoggingFilter {
+
+}

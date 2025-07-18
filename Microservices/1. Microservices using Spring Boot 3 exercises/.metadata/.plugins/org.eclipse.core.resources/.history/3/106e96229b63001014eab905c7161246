@@ -1,0 +1,5 @@
+package com.cognizant.userservice.service;
+
+public class UserService {
+
+}
